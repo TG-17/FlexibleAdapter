@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
  * @since 29/08/2017
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 25)
+@Config(sdk = 25)
 public class RemoveItemsTest {
 
     private FlexibleAdapter<AbstractFlexibleItem> mAdapter;

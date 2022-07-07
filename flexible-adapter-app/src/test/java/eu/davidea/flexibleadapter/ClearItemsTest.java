@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
  * @since 24/05/2017
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 25)
+@Config(sdk = 25)
 public class ClearItemsTest {
 
     FlexibleAdapter<AbstractFlexibleItem> mAdapter;

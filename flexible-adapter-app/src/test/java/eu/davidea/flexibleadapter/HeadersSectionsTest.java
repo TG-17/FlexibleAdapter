@@ -1,5 +1,7 @@
 package eu.davidea.flexibleadapter;
 
+import static android.os.Looper.getMainLooper;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,13 +17,14 @@ import eu.davidea.samples.flexibleadapter.services.DatabaseService;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.robolectric.Shadows.shadowOf;
 
 /**
  * @author Davide Steduto
  * @since 23/06/2016
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 25)
+@Config(sdk = 25)
 public class HeadersSectionsTest {
 
     private static final int ITEM_SIZE = 30;
@@ -111,14 +114,6 @@ public class HeadersSectionsTest {
         assertNotNull(header);
     }
 
-    @Test
-    public void testShowAndHideAllHeaders() throws Exception {
-        mAdapter = new FlexibleAdapter<>(mItems);
-        mAdapter.showAllHeaders();
-        assertEquals(HEADER_SIZE, mAdapter.getHeaderItems().size());
-        mAdapter.hideAllHeaders();
-        assertEquals(0, mAdapter.getHeaderItems().size());
-    }
 
     @Test
     public void testGetSectionItemPositions() throws Exception {

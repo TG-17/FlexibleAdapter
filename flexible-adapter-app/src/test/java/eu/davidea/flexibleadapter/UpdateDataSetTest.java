@@ -26,7 +26,7 @@ import static org.junit.Assert.assertThat;
  * @since 18/10/2016
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 25)
+@Config(sdk = 25)
 public class UpdateDataSetTest {
 
     private FlexibleAdapter<AbstractFlexibleItem> mAdapter;
@@ -49,20 +49,6 @@ public class UpdateDataSetTest {
             }
         };
         mAdapter.showAllHeaders();
-    }
-
-    @Test
-    public void testUpdateDataSet_WithNotifyDataSetChanged() throws Exception {
-        CountDownLatch signal = new CountDownLatch(1);
-        createSignalAdapter(signal);
-
-        List<AbstractFlexibleItem> initialItems = mAdapter.getCurrentItems();
-        mAdapter.updateDataSet(DatabaseService.getInstance().getDatabaseList());
-        List<AbstractFlexibleItem> updatedItems = mAdapter.getCurrentItems();
-
-        signal.await(300L, TimeUnit.MILLISECONDS);
-        assertEquals(initialItems.size(), mAdapter.getItemCount());
-        assertThat(initialItems, Matchers.contains(updatedItems.toArray()));
     }
 
     @Test

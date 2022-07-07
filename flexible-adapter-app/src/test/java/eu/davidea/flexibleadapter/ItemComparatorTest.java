@@ -22,7 +22,7 @@ import eu.davidea.viewholders.FlexibleViewHolder;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = 25)
+@Config(sdk = 25)
 public class ItemComparatorTest {
 
     private SimpleHeader[] headers;

@@ -47,7 +47,10 @@ android {
         }
     }
     testOptions {
-        unitTests.returnDefaultValues = true
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
     }
     lintOptions {
         abortOnError false
@@ -101,5 +104,8 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.5.1'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.mockito:mockito-core:2.23.4'
+    testImplementation 'org.hamcrest:hamcrest:2.2'
+    testImplementation project(":flexible-adapter")
+    testImplementation project(path: ':flexible-adapter-app')
 
 }
