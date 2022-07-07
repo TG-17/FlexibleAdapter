@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.vanniktech.android.javadoc'
 apply plugin: 'eu.davidea.grabver'
+apply plugin:  'maven-publish'
 
 versioning {
     major 5
@@ -48,4 +49,18 @@ dependencies {
 if (project.hasProperty('all') || project.hasProperty('adapter')) {
     apply from: '../maven-install.gradle'
     apply from: '../maven-publish.gradle'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'eu.davidea'
+                artifactId = 'flexible-adapter'
+                version = '5.1.0'
+            }
+        }
+    }
 }

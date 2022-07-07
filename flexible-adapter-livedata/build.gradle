@@ -1,11 +1,13 @@
 apply plugin: 'com.android.library'
 apply plugin: 'de.mannodermaus.android-junit5'
 apply plugin: 'eu.davidea.grabver'
+apply plugin:  'maven-publish'
 
 versioning {
     major 1
     minor 0
-    preRelease "b3"
+    patch 0
+    //preRelease "b3"
 }
 // For maven repository
 version = versioning.name
@@ -70,4 +72,18 @@ dependencies {
 
 if (project.hasProperty('all') || project.hasProperty('livedata')) {
     apply from: '../maven-install.gradle'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'eu.davidea'
+                artifactId = 'flexible-adapter-livedata'
+                version = '1.0.0'
+            }
+        }
+    }
 }

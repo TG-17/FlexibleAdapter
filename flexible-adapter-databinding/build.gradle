@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'eu.davidea.grabver'
+apply plugin:  'maven-publish'
 
 versioning {
     major 1
@@ -52,4 +53,18 @@ dependencies {
 
 if (project.hasProperty('all') || project.hasProperty('databinding')) {
     apply from: '../maven-install.gradle'
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.release
+                groupId = 'eu.davidea'
+                artifactId = 'flexible-adapter-databinding'
+                version = '1.0.0'
+            }
+        }
+    }
 }
