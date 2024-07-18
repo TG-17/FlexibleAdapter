@@ -113,7 +113,7 @@ buildscript {
         maven_gradle_plugin_version = '2.1'
         javadoc_plugin_version = '0.3.0'
         android_junit5_version = '1.7.1.1'
-        grabver_version = '1.0.1'
+        grabver_version = '2.0.2'
     }
 
     dependencies {
